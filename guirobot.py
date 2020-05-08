@@ -139,10 +139,10 @@ class Root(Tk):
         self.sliders = Scale(self.functions, from_=0,to=190, orient=HORIZONTAL,command=self.angle, label="Servomotors").grid(column = 1, row = 2)
         self.sliderm = Scale(self.functions, from_=0,to=100, orient=HORIZONTAL,command=self.move , label="Motors").grid(column = 2, row = 2)
         dir = Checkbutton(self.functions, text = "Direction", state = "normal", var=self.dir).grid(column = 3, row = 2)
-
+#comments
     def initangle(self):
         self.button = tk.Button(self.initsetup,text = "Calculate",command = self.calculate)
-        self.button.grid(column = 2, row = 5)
+        self.button.grid(column = 2, row = 5) 
         self.iangle = DoubleVar()
         self.rho = DoubleVar()
         self.arml = DoubleVar()
