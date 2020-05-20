@@ -12,9 +12,25 @@ import cv2
 from PIL import Image, ImageTk
 import os
 import numpy as np
+#import multiprocessing as mp
+#import mencoder
+import subprocess as sp
+from subprocess import Popen, PIPE
 
 gyro.MPU_Init(0x68)
 gyro.MPU_Init(0x69)
+#p = mp.Process(target=mencoder.my_callback)
+#p.star
+
+ebb = sp.Popen(['python','encoderbb.py'])
+ebd = sp.Popen(['python','encoderbd.py'])
+efb = sp.Popen(['python','encoderfb.py'])
+efd = sp.Popen(['python','encoderfd.py'])
+
+#output,err = p.communicate(b"input data that is passed to subprocess' stdin")
+#rc = p.returncode
+#eoutput = sp.check_output(['python','mencoder.py','-i','test.txt'])
+#print('encoder:',eoutput)
 
 class Root(Tk):
     def __init__(self):
@@ -74,6 +90,9 @@ class Root(Tk):
         self.initsetup = tk.LabelFrame(self,text = "Initial Setup")
         self.initsetup.grid(columnspan=3, row = 4, padx = 20, pady = 20)
         self.initangle()
+        #Empezamos
+#        output,err = p.communicate(b"input data that is passed to subprocess' stdin")
+#        rc = p.returncode
 
     def createSensors(self):
         #IMU
@@ -322,6 +341,10 @@ class Root(Tk):
             servgear.servo(i+12,int(value))
 
     def stop(self):
+        ebb.kill()
+        ebd.kill()
+        efb.kill()
+        efd.kill()
         self.mbc.set(0)
         self.mbb.set(0)
         self.mba.set(0)
@@ -378,5 +401,4 @@ class Timer:
 
 if __name__ == '__main__':
     root = Root()
-#    timer = Timer(root)
     root.mainloop()
