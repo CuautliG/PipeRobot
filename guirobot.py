@@ -3,6 +3,7 @@ import servgear
 import gyro
 from guizero import App, Text, TextBox, PushButton, Slider, Box, CheckBox
 import math
+import time
 from time import sleep
 from tkinter import *
 import tkinter as tk
@@ -26,6 +27,8 @@ ebb = sp.Popen(['python','encoderbb.py'])
 ebd = sp.Popen(['python','encoderbd.py'])
 efb = sp.Popen(['python','encoderfb.py'])
 efd = sp.Popen(['python','encoderfd.py'])
+imub = open("imub.txt","w+")
+imuf = open("imuf.txt","w+")
 
 #output,err = p.communicate(b"input data that is passed to subprocess' stdin")
 #rc = p.returncode
@@ -322,12 +325,22 @@ class Root(Tk):
 
     def updateb(self):
         a = self.calculate_ret(0x68)
+        t = time.localtime()
+        ctime = time.strftime("%H:%M:%S",t)
+        imub.write(ctime)
+        imub.write(" %f "%round(a.posx,2))
+        imub.write(" %f \n"%round(a.posy,2))
         self.sensorb.configure(text= str(round(a.posx,2))+"           "+str(round(a.posy,2)))
         self.sensorb.after(1000,self.updateb)
 
     def updatef(self):
         a = self.calculate_ret(0x69)
-        self.sensorf.configure(text= str(round(a.posx,2))+"           "+str(round(a.posy,2)))
+        t = time.localtime()
+        ctime = time.strftime("%H:%M:%S",t)
+        imuf.write(ctime)
+        imuf.write(" %f "%(round(a.posy,2)*(-1)))
+        imuf.write(" %f \n"%round(a.posx,2))
+        self.sensorf.configure(text= str(round(a.posy,2)*(-1))+"           "+str(round(a.posx,2)))
         self.sensorf.after(1000,self.updatef)
 
     def move(self,value):
