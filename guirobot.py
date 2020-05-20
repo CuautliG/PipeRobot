@@ -226,6 +226,7 @@ class Root(Tk):
                     except ValueError:
                         pass
                 print(servos)
+                """
                 sfac = (servos[0]+servos[1])/2
                 sbac = (servos[2]+servos[3])/2
                 self.anglefa(int(sfac))
@@ -236,6 +237,7 @@ class Root(Tk):
                 self.anglebc(int(sbac))
                 self.anglebd(int(servos[2]))
                 self.anglebb(int(servos[3]))
+                """
             elif 'G' in temp:
                 for word in temp.split():
                     try:
@@ -243,6 +245,7 @@ class Root(Tk):
                     except ValueError:
                         pass
                 print(motors)
+                """
                 mfac = (motors[0]+motors[1])/2
                 mbac = (motors[2]+motors[3])/2
                 self.movefa(int(mfac))
@@ -253,6 +256,7 @@ class Root(Tk):
                 self.movebc(int(mbac))
                 self.movebd(int(motors[2]))
                 self.movebb(int(motors[3]))
+                """
                 sleep(0.25)
             animate= self.after(1,self.playTrajectory)
         except ValueError:
