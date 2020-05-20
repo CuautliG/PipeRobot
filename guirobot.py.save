@@ -30,23 +30,6 @@ class Root(Tk):
         #Frame creation for Front Module
         self.frontmodule = tk.LabelFrame(self,text = "Front Module")
         self.frontmodule.grid(column = 2, row = 2, padx = 20, pady = 20)
-        #Variables for sliders
-        self.sbc = DoubleVar()
-        self.sbb = DoubleVar()
-        self.sba = DoubleVar()
-        self.sbd = DoubleVar()
-        self.mbc = DoubleVar()
-        self.mbb = DoubleVar()
-        self.mba = DoubleVar()
-        self.mbd = DoubleVar()
-        self.sfc = DoubleVar()
-        self.sfb = DoubleVar()
-        self.sfa = DoubleVar()
-        self.sfd = DoubleVar()
-        self.mfc = DoubleVar()
-        self.mfb = DoubleVar()
-        self.mfa = DoubleVar()
-        self.mfd = DoubleVar()
         #Labels and Check Creations
         self.createLabels()
         self.dirbc = BooleanVar()
@@ -104,23 +87,23 @@ class Root(Tk):
 
     def createSliders(self):
         #Movement for the back module
-        sbc = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebc, var=self.sbc, label="Servomotor").grid(column = 4, row = 3)
-        sbb = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebb, var=self.sbb, label="Servomotor").grid(column = 2, row = 7)
-        sba = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.angleba, var=self.sba, label="Servomotor").grid(column = 4, row = 11)
-        sbd = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebd, var=self.sbd, label="Servomotor").grid(column = 6, row = 7)
-        mbc = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebc , var=self.mbc, label="Motor").grid(column = 3, row = 3)
-        mbb = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebb , var=self.mbb, label="Motor").grid(column = 1, row = 7)
-        mba = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.moveba , var=self.mba, label="Motor").grid(column = 3, row = 11)
-        mbd = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebd , var=self.mbd, label="Motor").grid(column = 5, row = 7)
+        self.slidersbc = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebc, label="Servomotor").grid(column = 4, row = 3)
+        self.slidersbb = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebb, label="Servomotor").grid(column = 2, row = 7)
+        self.slidersba = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.angleba, label="Servomotor").grid(column = 4, row = 11)
+        self.slidersbd = Scale(self.backmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglebd, label="Servomotor").grid(column = 6, row = 7)
+        self.slidermbc = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebc , label="Motor").grid(column = 3, row = 3)
+        self.slidermbb = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebb , label="Motor").grid(column = 1, row = 7)
+        self.slidermba = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.moveba , label="Motor").grid(column = 3, row = 11)
+        self.slidermbd = Scale(self.backmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movebd , label="Motor").grid(column = 5, row = 7)
         #Movement for the front module
-        sfc = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefc, var=self.sfc, label="Servomotor").grid(column = 4, row = 3)
-        sfb = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefb, var=self.sfb, label="Servomotor").grid(column = 2, row = 7)
-        sfa = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefa, var=self.sfa, label="Servomotor").grid(column = 4, row = 11)
-        sfd = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefd, var=self.sfd, label="Servomotor").grid(column = 6, row = 7)
-        mfc = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefc , var=self.mfc, label="Motor").grid(column = 3, row = 3)
-        mfb = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefb , var=self.mfb, label="Motor").grid(column = 1, row = 7)
-        mfa = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefa , var=self.mfa, label="Motor").grid(column = 3, row = 11)
-        mfd = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefd , var=self.mfd, label="Motor").grid(column = 5, row = 7)
+        self.slidersfc = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefc, label="Servomotor").grid(column = 4, row = 3)
+        self.slidersfb = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefb, label="Servomotor").grid(column = 2, row = 7)
+        self.slidersfa = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefa, label="Servomotor").grid(column = 4, row = 11)
+        self.slidersfd = Scale(self.frontmodule, from_=0,to=190, orient=HORIZONTAL,command=self.anglefd, label="Servomotor").grid(column = 6, row = 7)
+        self.slidermfc = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefc , label="Motor").grid(column = 3, row = 3)
+        self.slidermfb = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefb , label="Motor").grid(column = 1, row = 7)
+        self.slidermfa = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefa , label="Motor").grid(column = 3, row = 11)
+        self.slidermfd = Scale(self.frontmodule, from_=0,to=100, orient=HORIZONTAL,command=self.movefd , label="Motor").grid(column = 5, row = 7)
 
     def createLabels(self):
         #Labels for Back Module
@@ -147,9 +130,9 @@ class Root(Tk):
         dirfd = Checkbutton(self.frontmodule, text = "Direction", state = "normal", var=self.dirfd).grid(column = 5, row = 8)
 
     def functionsbtn(self):
-        self.bstop = tk.Button(self.functions, text = "STOP",command = self.stop)
+        self.bstop = tk.Button(self.functions, text = "STOP")
         self.bstop.grid(column = 1, row = 1)
-        self.breset = tk.Button(self.functions, text = "RESET", command = self.reset)
+        self.breset = tk.Button(self.functions, text = "RESET")
         self.breset.grid(column = 2, row = 1)
         self.brou1 = tk.Button(self.functions, text = "Routine 1")
         self.brou1.grid(column = 3, row = 1)
@@ -159,7 +142,7 @@ class Root(Tk):
 #comments
     def initangle(self):
         self.button = tk.Button(self.initsetup,text = "Calculate",command = self.calculate)
-        self.button.grid(column = 2, row = 5)
+        self.button.grid(column = 2, row = 5) 
         self.iangle = DoubleVar()
         self.rho = DoubleVar()
         self.arml = DoubleVar()
@@ -198,65 +181,53 @@ class Root(Tk):
 
 
     def fileDialog(self):
-        global animate
         self.filename = filedialog.askopenfilename(initialdir = "/Home",title = "Select file",filetypes = (("text","*.txt"),("all files","*.*"))) 
         self.label = tk.Label(self.labelbrowse, text = "")
-        animate = False
         self.line = open(self.filename)
         self.label.grid(column = 1, row = 2)
         self.label.configure(text = self.filename)
 
     def stopTrajectory(self):
-        global animate
-        self.stop()
-        self.reset()
-        self.after_cancel(animate)
-        animate = False
+        global after_id
+        if after_id:
+            self.after_cancel(after_id)
+            after_id = None
 
     def playTrajectory(self):
         global animate
         servos = []
         motors = []
-        try: # Read and print the entire file line by line
+        try:
             temp = self.line.readline()
-            if 'S' in temp:
-                for word in temp.split():
-                    try:
-                        servos.append(float(word))
-                    except ValueError:
-                        pass
-                print(servos)
-                sfac = (servos[0]+servos[1])/2
-                sbac = (servos[2]+servos[3])/2
-                self.anglefa(int(sfac))
-                self.anglefc(int(sfac))
-                self.anglefd(int(servos[0]))
-                self.anglefb(int(servos[1]))
-                self.angleba(int(sbac))
-                self.anglebc(int(sbac))
-                self.anglebd(int(servos[2]))
-                self.anglebb(int(servos[3]))
-            elif 'G' in temp:
-                for word in temp.split():
-                    try:
-                        motors.append(float(word))
-                    except ValueError:
-                        pass
-                print(motors)
-                mfac = (motors[0]+motors[1])/2
-                mbac = (motors[2]+motors[3])/2
-                self.movefa(int(mfac))
-                self.movefc(int(mfac))
-                self.movefd(int(motors[0]))
-                self.movefb(int(motors[1]))
-                self.moveba(int(mbac))
-                self.movebc(int(mbac))
-                self.movebd(int(motors[2]))
-                self.movebb(int(motors[3]))
-                sleep(0.25)
-            animate= self.after(1,self.playTrajectory)
-        except ValueError:
-            self.line.close()
+            print(temp)
+            if 
+        with open(self.filename, 'r
+                if 'S' in line:
+                    for word in line.split():
+                        try:
+                            servos.append(float(word))
+                        except ValueError:
+                            pass
+                    print(servos)
+                    self.anglefd(int(servos[0]))
+                    self.anglefb(int(servos[1]))
+                    self.anglebd(int(servos[2]))
+                    self.anglebb(int(servos[3]))
+                elif 'G' in line:
+                    for word in line.split():
+                        try:
+                            motors.append(float(word))
+                        except ValueError:
+                            pass
+                    print(motors)
+                    self.movefd(int(motors[0]))
+                    self.movefb(int(motors[1]))
+                    self.movebd(int(motors[2]))
+                    self.movebb(int(motors[3]))
+                    sleep(0.25)
+                else:
+                    print("Nothing")
+                after_id= self.after(100,playTrajectory)
 
     def angleba(self,value):
     	servgear.servo(3,int(value))
@@ -311,47 +282,57 @@ class Root(Tk):
         for i in range(4,8):
             servgear.motor(self.dir.get(),i,int(value))
             servgear.motor(self.dir.get(),i+4,int(value))
+#        servgear.motor(dirall.value,5,int(value))
+#        servgear.motor(dirall.value,6,int(value))
+#        servgear.motor(dirall.value,7,int(value))
+#        servgear.motor(dirall.value,8,int(value))
+#        servgear.motor(dirall.value,9,int(value))
+#        servgear.motor(dirall.value,10,int(value))
+#        servgear.motor(dirall.value,11,int(value))
 
     def angle(self,value):
         for i in range(0,4):
             servgear.servo(i,int(value))
             servgear.servo(i+12,int(value))
+#        servgear.servo(2,int(value))
+#        servgear.servo(3,int(value))
+#        servgear.servo(12,int(value))
+#        servgear.servo(13,int(value))
+#        servgear.servo(14,int(value))
+#        servgear.servo(15,int(value))
 
-    def stop(self):
-        self.mbc.set(0)
-        self.mbb.set(0)
-        self.mba.set(0)
-        self.mbd.set(0)
-        self.mfc.set(0)
-        self.mfb.set(0)
-        self.mfa.set(0)
-        self.mfd.set(0)
-        for i in range(4,8):
+    def stop():
+        for i in range(4,7):
             servgear.motor(0,i,0)
             servgear.motor(0,i+4,0)
 
-    def reset(self):
-        self.sbc.set(0)
-        self.sbb.set(0)
-        self.sba.set(0)
-        self.sbd.set(0)
-        self.sfc.set(0)
-        self.sfb.set(0)
-        self.sfa.set(0)
-        self.sfd.set(0)
-        for i in range(0,4):
-            servgear.servo(i,0)
-            servgear.servo(i+12,0)
+    def reset():
+        mba.tk.set(0)
+        mbb.tk.set(0)
+        mbc.tk.set(0)
+        mbd.tk.set(0)
+        mfa.tk.set(0)
+        mfb.tk.set(0)
+        mfc.tk.set(0)
+        mfd.tk.set(0)
+        sba.tk.set(0)
+        sbb.tk.set(0)
+        sbc.tk.set(0)
+        sbd.tk.set(0)
+        sfa.tk.set(0)
+        sfb.tk.set(0)
+        sfc.tk.set(0)
+        sfd.tk.set(0)
 
-    def routine1(self):
-        sfa.tk.set(170)
-        sfc.tk.set(170)
-        sba.tk.set(170)
-        sbc.tk.set(170)
-        sfb.tk.set(150)
-        sfd.tk.set(150)
-        sbb.tk.set(150)
-        sbd.tk.set(150)
+def routine1():
+    sfa.tk.set(170)
+    sfc.tk.set(170)
+    sba.tk.set(170)
+    sbc.tk.set(170)
+    sfb.tk.set(150)
+    sfd.tk.set(150)
+    sbb.tk.set(150)
+    sbd.tk.set(150)
 
 class Timer:
     def __init__(self, parent):
