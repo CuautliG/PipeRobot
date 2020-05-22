@@ -26,8 +26,8 @@ def my_callback():
                                         counter -=1
                                 t = time.localtime()
                                 ctime = time.strftime("%H:%M:%S",t)
-                                print (ctime)
-                                print (counter)
+                                #print (ctime)
+                                #print (counter)
                                 f.write(ctime)
                                 f.write(" %d\n" %counter)
                         lastA = stateA

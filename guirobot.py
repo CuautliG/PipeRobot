@@ -271,6 +271,7 @@ class Root(Tk):
                 mbac = (motors[2]+motors[3])/2
                 #self.movefa(int(mfac))
                 #self.movefc(int(mfac))
+                #print("No llego")
                 self.movefd(int(motors[0])*3)
                 self.movefb(int(motors[1])*3)
                 #self.moveba(int(mbac))
