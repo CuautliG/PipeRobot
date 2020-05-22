@@ -271,12 +271,12 @@ class Root(Tk):
                 mbac = (motors[2]+motors[3])/2
                 #self.movefa(int(mfac))
                 #self.movefc(int(mfac))
-                self.movefd(int(motors[0]))
-                self.movefb(int(motors[1]))
+                self.movefd(int(motors[0])*3)
+                self.movefb(int(motors[1])*3)
                 #self.moveba(int(mbac))
                 #self.movebc(int(mbac))
-                self.movebd(int(motors[2]))
-                self.movebb(int(motors[3]))
+                self.movebd(int(motors[2])*3)
+                self.movebb(int(motors[3])*3)
                 sleep(0.25)
             animate= self.after(1,self.playTrajectory)
         except ValueError:
