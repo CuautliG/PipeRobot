@@ -248,18 +248,6 @@ class Root(Tk):
                     except ValueError:
                         pass
                 print(servos)
-                """
-                sfac = (servos[0]+servos[1])/2
-                sbac = (servos[2]+servos[3])/2
-                self.anglefa(int(sfac))
-                self.anglefc(int(sfac))
-                self.anglefd(int(servos[0]))
-                self.anglefb(int(servos[1]))
-                self.angleba(int(sbac))
-                self.anglebc(int(sbac))
-                self.anglebd(int(servos[2]))
-                self.anglebb(int(servos[3]))
-                """
             elif 'G' in temp:
                 for word in temp.split():
                     try:
@@ -267,8 +255,8 @@ class Root(Tk):
                     except ValueError:
                         pass
                 print(motors)
-                mfac = (motors[0]+motors[1])/2
-                mbac = (motors[2]+motors[3])/2
+                #mfac = (motors[0]+motors[1])/2
+                #mbac = (motors[2]+motors[3])/2
                 #self.movefa(int(mfac))
                 #self.movefc(int(mfac))
                 #print("No llego")
@@ -281,7 +269,8 @@ class Root(Tk):
                 sleep(0.25)
             animate= self.after(1,self.playTrajectory)
         except ValueError:
-            self.line.close()
+            print("Error")
+            #self.line.close()
 
     def angleba(self,value):
     	servgear.servo(3,int(value))
@@ -343,9 +332,14 @@ class Root(Tk):
         self.sensorf.after(1000,self.updatef)
 
     def move(self,value):
-        for i in range(4,8):
-            servgear.motor(self.dir.get(),i,int(value))
-            servgear.motor(self.dir.get(),i+4,int(value))
+        #for i in range(4,8):
+        #    servgear.motor(self.dir.get(),i,int(value))
+        #    servgear.motor(self.dir.get(),i+4,int(value))
+        servgear.motor(self.dir.get(),4,int(value))
+        servgear.motor(self.dir.get(),6,int(value))
+        servgear.motor(self.dir.get(),8,int(value))
+        servgear.motor(self.dir.get(),10,int(value))
+
 
     def angle(self,value):
         for i in range(0,4):
