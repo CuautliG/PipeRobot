@@ -13,15 +13,11 @@ import cv2
 from PIL import Image, ImageTk
 import os
 import numpy as np
-#import multiprocessing as mp
-#import mencoder
 import subprocess as sp
 from subprocess import Popen, PIPE
 
 gyro.MPU_Init(0x68)
 gyro.MPU_Init(0x69)
-#p = mp.Process(target=mencoder.my_callback)
-#p.star
 
 ebb = sp.Popen(['python','encoderbb.py'])
 ebd = sp.Popen(['python','encoderbd.py'])
