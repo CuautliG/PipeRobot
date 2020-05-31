@@ -31,14 +31,14 @@ def motor(dir,number,speed):
                 print('The gearmotor does not exist')
         if number == 7 or number == 9 or number == 10:
                 if dir == 1:
-                        GPIO.output(m1[number],0)
-                else:
                         GPIO.output(m1[number],1)
+                else:
+                        GPIO.output(m1[number],0)
         else :
                 if dir == 1:
-                        GPIO.output(m1[number],1)
-                else:
                         GPIO.output(m1[number],0)
+                else:
+                        GPIO.output(m1[number],1)
 def servo(number,angle):
         if (number>3 and number<12):
                 print('The servomotor does not exist')
