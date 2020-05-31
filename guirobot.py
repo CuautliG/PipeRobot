@@ -262,7 +262,7 @@ class Root(Tk):
                 self.movebc(int(mbac)*3)
                 self.movebd(int(motors[2])*3)
                 self.movebb(int(motors[3])*3)
-                sleep(0.5)
+                sleep(40)
             animate= self.after(1,self.playTrajectory)
         except ValueError:
             print("Error")
