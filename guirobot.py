@@ -312,20 +312,22 @@ class Root(Tk):
         t = time.localtime()
         ctime = time.strftime("%H:%M:%S",t)
         imub.write(ctime)
-        imub.write(" %f "%round(a.posx,2))
-        imub.write(" %f \n"%round(a.posy,2))
-        self.sensorb.configure(text= str(round(a.posx,2))+"           "+str(round(a.posy,2)))
-        self.sensorb.after(1000,self.updateb)
+        imub.write(" %f "%round(a.posy,2)*(-1))
+        imub.write(" %f "%round(a.posz,2))
+        imub.write(" %f \n"%round(a.posx,2))
+        self.sensorb.configure(text= str(round(a.posy,2)*(-1))+"    "+str(round(a.posz,2))+"    "+str(round(a.posx,2)) )
+        self.sensorb.after(500,self.updateb)
 
     def updatef(self):
         a = self.calculate_ret(0x69)
         t = time.localtime()
         ctime = time.strftime("%H:%M:%S",t)
         imuf.write(ctime)
-        imuf.write(" %f "%(round(a.posy,2)*(-1)))
-        imuf.write(" %f \n"%round(a.posx,2))
-        self.sensorf.configure(text= str(round(a.posy,2)*(-1))+"           "+str(round(a.posx,2)))
-        self.sensorf.after(1000,self.updatef)
+        imuf.write(" %f "%(round(a.posx,2)))
+        imuf.write(" %f "%round(a.posz,2))
+        imuf.write(" %f \n"%round(a.posy,2)*(-1))
+        self.sensorf.configure(text= str(round(a.posx,2))+"     "+str(round(a.posz,2))+"    "+str(round(a.posy,2)*(-1)) )
+        self.sensorf.after(500,self.updatef)
 
     def move(self,value):
         for i in range(4,8):

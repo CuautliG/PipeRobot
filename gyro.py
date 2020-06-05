@@ -54,8 +54,9 @@ class calculate:
         Az = acc_z*(9.81/16384.0)
         #self.posx = math.atan(Ax/math.sqrt((math.pow(Ay,2)+math.pow(Az,2))))*(180.0/math.pi)
         #self.posy = math.atan(Ay/math.sqrt((math.pow(Ax,2)+math.pow(Az,2))))*(180.0/math.pi)
-        self.posx = (math.atan2(-Ay,-Az)+math.pi)*(180.0/math.pi)
-        self.posy = (math.atan2(-Ax,-Az)+math.pi)*(180.0/math.pi)
+        self.posx = (math.atan2(-Ay,-Az))*(180.0/math.pi)
+        self.posy = (math.atan2(-Ax,-Az))*(180.0/math.pi)
+        self.posz = (math.atan2(-Ay,-Ax))*(180.0/math.pi)
 #bus = smbus.SMBus(1)    # or bus = smbus.SMBus(0) for older version boards
 #Device_Address = 0x68   # MPU6050 device address
 
