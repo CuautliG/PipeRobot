@@ -69,8 +69,8 @@ ebd = Encoder(BDA,BDB)
 def move(pwm):
 #    servgear.motor(1,9,pwm)
     for i in range(4,8):
-        servgear.motor(1,i,pwm)
-        servgear.motor(1,i+4,pwm)
+        servgear.motor(0,i,pwm)
+        servgear.motor(0,i+4,pwm)
 
 #Initial variables
 #cpr in 100 cm Eq. = (goal_in_cm * cpr_in_a_rev)/(pi*dia)=(100*23673.84)/(pi*3.1)

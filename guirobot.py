@@ -28,7 +28,7 @@ gyro.MPU_Init(0x69)
 #imuf = sp.Popen(['python','simuf.py'])
 
 #For Closed loop controller
-cltest = sp.Popen(['python3','closeloop.py'])
+#cltest = sp.Popen(['python3','closeloop.py'])
 
 class Root(Tk):
     def __init__(self):
@@ -168,7 +168,7 @@ class Root(Tk):
         self.bstop.grid(column = 1, row = 1)
         self.breset = tk.Button(self.functions, text = "RESET", command = self.reset)
         self.breset.grid(column = 2, row = 1)
-        self.brou1 = tk.Button(self.functions, text = "Routine 1")
+        self.brou1 = tk.Button(self.functions, text = "Routine 1", command = self.cloop)
         self.brou1.grid(column = 3, row = 1)
         self.sliders = Scale(self.functions, from_=0,to=190, orient=HORIZONTAL,command=self.angle, label="Servomotors").grid(column = 1, row = 2)
         self.sliderm = Scale(self.functions, from_=0,to=100, orient=HORIZONTAL,command=self.move , label="Motors").grid(column = 2, row = 2)
@@ -375,6 +375,11 @@ class Root(Tk):
         for i in range(0,4):
             servgear.servo(i,0)
             servgear.servo(i+12,0)
+
+    def cloop(self):
+        #For Closed loop controller
+        cltest = sp.Popen(['python3','closeloop.py'])
+
 
     def routine1(self):
         sfa.tk.set(170)
