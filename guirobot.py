@@ -19,20 +19,16 @@ from subprocess import Popen, PIPE
 gyro.MPU_Init(0x68)
 gyro.MPU_Init(0x69)
 
-ebb = sp.Popen(['python','encoderbb.py'])
-ebd = sp.Popen(['python','encoderbd.py'])
-efb = sp.Popen(['python','encoderfb.py'])
-efd = sp.Popen(['python','encoderfd.py'])
-imub = sp.Popen(['python','simub.py'])
-imuf = sp.Popen(['python','simuf.py'])
+#For Open loop controller
+#ebb = sp.Popen(['python','encoderbb.py'])
+#ebd = sp.Popen(['python','encoderbd.py'])
+#efb = sp.Popen(['python','encoderfb.py'])
+#efd = sp.Popen(['python','encoderfd.py'])
+#imub = sp.Popen(['python','simub.py'])
+#imuf = sp.Popen(['python','simuf.py'])
 
-#imub = open("imub.txt","w+")
-#imuf = open("imuf.txt","w+")
-
-#output,err = p.communicate(b"input data that is passed to subprocess' stdin")
-#rc = p.returncode
-#eoutput = sp.check_output(['python','mencoder.py','-i','test.txt'])
-#print('encoder:',eoutput)
+#For Closed loop controller
+cltest = sp.Popen(['python3','closeloop.py'])
 
 class Root(Tk):
     def __init__(self):
@@ -348,12 +344,13 @@ class Root(Tk):
             servgear.servo(i+12,int(value))
 
     def stop(self):
-        ebb.kill()
-        ebd.kill()
-        efb.kill()
-        efd.kill()
-        imub.kill()
-        imuf.kill()
+        cltest.kill()
+        #ebb.kill()
+        #ebd.kill()
+        ##efb.kill()
+        #efd.kill()
+        #imub.kill()
+        #imuf.kill()
         self.mbc.set(0)
         self.mbb.set(0)
         self.mba.set(0)
