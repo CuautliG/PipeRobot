@@ -28,7 +28,7 @@ gyro.MPU_Init(0x69)
 #imuf = sp.Popen(['python','simuf.py'])
 
 #For Closed loop controller
-#cltest = sp.Popen(['python3','closeloop.py'])
+cltest = sp.Popen(['python3','closeloop.py'])
 
 class Root(Tk):
     def __init__(self):
