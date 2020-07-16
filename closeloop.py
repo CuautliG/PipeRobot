@@ -47,13 +47,10 @@ class Encoder(object):
         GPIO.add_event_detect(pin_a,GPIO.BOTH,callback = self._increment)
         if pin_b != 4:
             GPIO.add_event_detect(pin_b,GPIO.BOTH,callback = self._increment)
-
     def reset(self):
         self._value = 0
-
     def _increment(self,channel):
         self._value += 1
-
     @property
     def value(self):
         return self._value
@@ -82,7 +79,7 @@ KP = 0.022
 KD = 0.001
 KI = 0.000
 MAX_SPEED = 100
-
+MIN_SPEED = 0
 #Initialize the PD controller
 pid = PID.PID(KP, KI, KD)
 pid.SetPoint = TARGET
@@ -98,13 +95,21 @@ while True:
     error = TARGET - prom_encoders #Average error
     pid.update(prom_encoders)      #update PD
     PWM = pid.output               #Update the PWM according to the PD 
-    PWM = max(min( int(PWM), MAX_SPEED ),0) #Adjust the PWM to be between 0 and 100
+    PWM = max(min( int(PWM), MAX_SPEED), MIN_SPEED) #Adjust the PWM to be between 0 and 100
     #Modify the speed of the motors
     move(PWM)
-
-    #print("eba {} ebb {} ebc {} ebd {}".format(eba.value, ebb.value, ebc.value, ebd.value))
+    #Print current values of the encoders and error next to the pwm (0 to 100)
+    print("eba {} ebb {} ebc {} ebd {}".format((efa.value+efb.value)/2, ebb.value*2, (efb.value+efc.value)/2, (efd.value+efa.value)/2))
     print("efa {} efb {} efc {} efd {}".format(efa.value, efb.value, efc.value, efd.value))
     print("Error {} Speed {}".format(error, PWM))
+    cltest.write("%d"%((efa.value+efb.value)/2))
+    cltest.write(" , ")
+    cltest.write("%d"%(ebb.value*2))
+    cltest.write(" , ")
+    cltest.write("%d"%((efb.value+efc.value)/2))
+    cltest.write(" , ")
+    cltest.write("%d"%((efd.value+efa.value)/2))
+    cltest.write(" , ")
     cltest.write("%d"%efa.value)
     cltest.write(" , ")
     cltest.write("%d"%efb.value)
